@@ -1,2 +1,2 @@
-# react-java-gke
-Example Project on how to deploy React App with Java Backend on GCP GKE
+# react-java-ecs
+Example Project on how to deploy react with java on ECS

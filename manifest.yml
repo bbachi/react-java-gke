@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: react-webapp
+  name: react-webapp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: react-webapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: react-webapp
+    spec:
+      containers:
+      - image: gcr.io/staticweb-test/react-webapp:v1
+        name: webapp
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 8080 
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-webapp
+  labels:
+    run: react-webapp
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: react-webapp
+  type: LoadBalancer
